@@ -45,16 +45,14 @@ public class MainActivity extends AppCompatActivity {
         micliente.post("http://www.programadoresperuanos.com/test_app/index.php", new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                if (statusCode == 200){
+                if (statusCode == 200) {
                     try {
-                        JSONObject mirespuesta = new JSONObject(String.valueOf(responseBody));
-                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-                            JSONArray matrizPaises = new JSONArray(mirespuesta);
-                            p1.setText(matrizPaises.getString(0));
-                            p2.setText(matrizPaises.getString(1));
-                            p3.setText(matrizPaises.getString(2));
-                            p4.setText(matrizPaises.getString(3));
-                        }
+                        String respuesta = new String(responseBody);
+                        JSONArray matrizPaises = (JSONArray) new JSONArray(respuesta);
+                        p1.setText(matrizPaises.getString(0));
+                        p2.setText(matrizPaises.getString(1));
+                        p3.setText(matrizPaises.getString(2));
+                        p4.setText(matrizPaises.getString(3));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
