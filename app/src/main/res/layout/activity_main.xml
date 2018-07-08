@@ -52,7 +52,6 @@
             android:text="Pais 4" />
 
         <Button
-            android:onClick="actualizar"
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
